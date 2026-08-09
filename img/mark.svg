@@ -1,0 +1,14 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" role="img" aria-label="OSHO GAMES">
+  <defs>
+    <linearGradient id="g" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#E8467C"/>
+      <stop offset="1" stop-color="#3CB49B"/>
+    </linearGradient>
+    <mask id="m">
+      <rect width="120" height="120" fill="#fff"/>
+      <!-- four-point star knocked out of the tile -->
+      <path fill="#000" d="M60 20 C63 44 76 57 100 60 C76 63 63 76 60 100 C57 76 44 63 20 60 C44 57 57 44 60 20 Z"/>
+    </mask>
+  </defs>
+  <rect width="120" height="120" rx="30" fill="url(#g)" mask="url(#m)"/>
+</svg>

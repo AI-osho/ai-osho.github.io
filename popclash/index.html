@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>POP CLASH — Eight fighters. One arena.</title>
+<meta name="description" content="A platform fighter built for one hand on a phone. Eight fighters, quest mode with bosses, gear and skills. Offline, no ads, no purchases.">
+<link rel="icon" href="img/icon.png">
+<meta property="og:title" content="POP CLASH">
+<meta property="og:description" content="Eight fighters. One arena. Knock everyone else off the stage.">
+<meta property="og:image" content="img/banner.jpg">
+<meta property="og:type" content="website">
+<style>
+  :root{
+    --pink:#E8467C; --teal:#3CB49B; --sun:#FFD23F; --ink:#0C0716;
+    --paper:#140E22; --line:rgba(255,255,255,.12); --dim:#A79CC0;
+  }
+  *{box-sizing:border-box}
+  html{scroll-behavior:smooth}
+  body{
+    margin:0; background:var(--ink); color:#F3EFFA;
+    font:16px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",
+         Arial,"Hiragino Sans","Noto Sans JP",sans-serif;
+    -webkit-font-smoothing:antialiased;
+  }
+  a{color:var(--sun)}
+  .wrap{max-width:1040px; margin-inline:auto; padding-inline:20px}
+
+  /* studio bar */
+  .bar{ position:sticky; top:0; z-index:9; backdrop-filter:blur(10px);
+        background:rgba(12,7,22,.78); border-bottom:1px solid var(--line) }
+  .bar .wrap{ display:flex; align-items:center; gap:11px; height:58px }
+  .bar img{ width:26px; height:26px; display:block }
+  .bar .home{ font-size:14px; letter-spacing:.14em; font-weight:700;
+              color:#F3EFFA; text-decoration:none }
+  .bar nav{ margin-left:auto; font-size:14px }
+  .bar nav a{ color:var(--dim); text-decoration:none }
+  .bar nav a:hover{ color:#fff }
+
+  /* ---- hero ---- */
+  header{
+    position:relative; overflow:hidden; text-align:center;
+    padding:22px 0 56px;
+    background:
+      radial-gradient(1200px 460px at 50% -8%, rgba(232,70,124,.42), transparent 62%),
+      radial-gradient(1000px 420px at 84% 8%, rgba(60,180,155,.34), transparent 60%),
+      var(--ink);
+  }
+  header img.banner{ width:100%; max-width:1040px; display:block; margin:0 auto -8px }
+  h1{ position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0) }
+  .tag{ font-size:clamp(19px,3.4vw,30px); font-weight:800; letter-spacing:.02em; margin:8px 0 6px }
+  .sub{ color:var(--dim); margin:0 0 30px }
+  .cta{
+    display:inline-block; padding:15px 34px; border-radius:999px; text-decoration:none;
+    font-weight:800; letter-spacing:.03em; color:#1A0B14;
+    background:linear-gradient(135deg,var(--sun),#FFB03F);
+    box-shadow:0 10px 30px rgba(255,178,63,.28);
+  }
+  .cta.ghost{
+    background:transparent; color:#F3EFFA; border:2px solid var(--line);
+    box-shadow:none; margin-left:10px;
+  }
+  .badges{ margin-top:26px; color:var(--dim); font-size:14px }
+  .badges span{ display:inline-block; margin:0 10px }
+
+  /* ---- sections ---- */
+  section{ padding:64px 0; border-top:1px solid var(--line) }
+  h2{ font-size:clamp(21px,3vw,28px); margin:0 0 10px; letter-spacing:.01em }
+  .lead{ color:var(--dim); margin:0 0 30px; max-width:62ch }
+
+  video{ width:100%; border-radius:14px; border:1px solid var(--line); display:block; background:#000 }
+
+  .shots{ display:grid; grid-template-columns:repeat(auto-fit,minmax(300px,1fr)); gap:14px }
+  .shots img{ width:100%; border-radius:12px; border:1px solid var(--line); display:block }
+
+  .grid{ display:grid; grid-template-columns:repeat(auto-fit,minmax(232px,1fr)); gap:16px; margin-top:8px }
+  .card{ background:var(--paper); border:1px solid var(--line); border-radius:14px; padding:20px 22px }
+  .card h3{ margin:0 0 8px; font-size:16px; letter-spacing:.06em; text-transform:uppercase }
+  .card h3.p{ color:var(--pink) } .card h3.t{ color:var(--teal) } .card h3.s{ color:var(--sun) }
+  .card p{ margin:0; color:var(--dim); font-size:15px }
+
+  table{ border-collapse:collapse; width:100%; font-size:15px }
+  td{ padding:11px 4px; border-bottom:1px solid var(--line); vertical-align:top }
+  td:first-child{ color:var(--dim); width:12em; white-space:nowrap }
+
+  footer{ padding:44px 0 66px; border-top:1px solid var(--line); color:var(--dim); font-size:14px }
+  footer a{ color:var(--dim) }
+  .jp{ margin-top:14px; padding-top:14px; border-top:1px dashed var(--line) }
+</style>
+</head>
+<body>
+
+<div class="bar">
+  <div class="wrap">
+    <a href="../"><img src="../img/mark.svg" alt="OSHO GAMES"></a>
+    <a class="home" href="../">OSHO GAMES</a>
+    <nav><a href="../#games">All games</a></nav>
+  </div>
+</div>
+
+<header>
+  <div class="wrap">
+    <h1>POP CLASH</h1>
+    <img class="banner" src="img/banner.jpg" alt="POP CLASH — the eight fighters">
+    <p class="tag">Eight fighters. One arena.</p>
+    <p class="sub">Knock everyone else off the stage.</p>
+    <a class="cta" href="#video">Watch it play</a>
+    <a class="cta ghost" href="#modes">What's in it</a>
+    <p class="badges">
+      <span>No ads</span>·<span>No purchases</span>·<span>Plays offline</span>·<span>8 languages</span>
+    </p>
+  </div>
+</header>
+
+<section id="video">
+  <div class="wrap">
+    <h2>Twenty seconds of it</h2>
+    <p class="lead">Four fighters, one stage, no health bars. Damage builds a percentage —
+      the higher yours climbs, the further the next hit sends you.</p>
+    <video src="gameplay.mp4" controls muted loop playsinline poster="img/03-battle.jpg"></video>
+  </div>
+</section>
+
+<section id="modes">
+  <div class="wrap">
+    <h2>What's in it</h2>
+    <div class="grid">
+      <div class="card">
+        <h3 class="p">Eight fighters</h3>
+        <p>Two humans, two robots, two beasts, two monsters. Four unique specials each —
+           thirty-two in all, and none of them play alike.</p>
+      </div>
+      <div class="card">
+        <h3 class="t">Quest mode</h3>
+        <p>Four chapters, sixteen fights, four bosses. Every node tells you what it pays
+           before you commit, and bosses drop rare gear.</p>
+      </div>
+      <div class="card">
+        <h3 class="s">Gear &amp; skills</h3>
+        <p>Ninety-six pieces of equipment that show up on the character, not just in the
+           stats. Level a special and it changes, not just hits harder.</p>
+      </div>
+      <div class="card">
+        <h3 class="p">Local versus</h3>
+        <p>Two to four fighters on one device, or against the CPU at four difficulty
+           levels. Stocks from one to five, or endless.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>Screens</h2>
+    <div class="shots">
+      <img src="img/01-title.jpg" alt="Title screen" loading="lazy">
+      <img src="img/02-fighters.jpg" alt="Choosing a fighter" loading="lazy">
+      <img src="img/05-quest.jpg" alt="Quest map with rewards" loading="lazy">
+      <img src="img/06-boss.jpg" alt="Boss fight" loading="lazy">
+      <img src="img/07-gear.jpg" alt="Gear and skills" loading="lazy">
+      <img src="img/03-battle.jpg" alt="Four-way battle" loading="lazy">
+    </div>
+  </div>
+</section>
+
+<section>
+  <div class="wrap">
+    <h2>The details</h2>
+    <table>
+      <tr><td>Platform</td><td>Android 7.0 and up · landscape</td></tr>
+      <tr><td>Price</td><td>Free. No ads, no in-app purchases, no timers.</td></tr>
+      <tr><td>Network</td><td>None. The game makes no network requests and runs in airplane mode.</td></tr>
+      <tr><td>Data</td><td>Nothing is collected or sent. One save file stays on your device.
+        <a href="privacy.html">Privacy policy</a></td></tr>
+      <tr><td>Languages</td><td>English · 日本語 · Español · 中文 · 한국어 · Français · Deutsch · Português</td></tr>
+      <tr><td>Controls</td><td>One stick, three buttons. Built for thumbs.</td></tr>
+      <tr><td>Contact</td><td><a href="mailto:ai.hitori.osho@gmail.com">ai.hitori.osho@gmail.com</a></td></tr>
+    </table>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap">
+    © 2026 <a href="../">OSHO GAMES</a> · POP CLASH · <a href="privacy.html">Privacy policy</a>
+    <div class="jp">
+      8人のファイターで場外へ弾き飛ばす対戦アクション。クエスト・ボス戦・装備・スキルを収録。
+      広告なし・課金なし・通信なし。完全オフラインで遊べます。
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
