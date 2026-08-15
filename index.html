@@ -5,117 +5,124 @@
 <meta name="viewport" content="width=device-width,initial-scale=1">
 <title>OSHO GAMES — games for phones</title>
 <meta name="description" content="An independent game studio. Small, fast games built to be played with two thumbs.">
-<link rel="icon" href="img/mark.svg">
+<link rel="icon" href="img/favicon.png">
 <meta property="og:title" content="OSHO GAMES">
 <meta property="og:description" content="An independent game studio. Small, fast games built to be played with two thumbs.">
-<meta property="og:image" content="img/popclash-banner.jpg">
+<meta property="og:image" content="https://ai-osho.github.io/img/og.png">
 <meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
 <style>
+  /* 書体はサイト内に同梱（外部CDNに依存しない / SIL Open Font License 1.1） */
+  @font-face{font-family:"Press Start 2P";font-style:normal;font-weight:400;font-display:swap;
+    src:url("fonts/press-start-2p.woff2") format("woff2")}
+  @font-face{font-family:"Silkscreen";font-style:normal;font-weight:400;font-display:swap;
+    src:url("fonts/silkscreen.woff2") format("woff2")}
+  @font-face{font-family:"Silkscreen";font-style:normal;font-weight:700;font-display:swap;
+    src:url("fonts/silkscreen-bold.woff2") format("woff2")}
+
+  /* ============================================================
+     OSHO GAMES — DITHER
+     スタジオの面（バー・ヒーロー・About・フッター）= 白黒。
+     ゲームの帯 = そのタイトルの色。--c で切り替える。
+     網のドットは大きく打つ。細かい網は灰色に潰れて意味を失う。
+     ============================================================ */
   :root{
-    --pink:#E8467C; --teal:#3CB49B; --sun:#FFD23F;
-    --ink:#09060F; --paper:#130D1F; --line:rgba(255,255,255,.11); --dim:#9C93B4;
+    --ink:#FFFFFF; --paper:#000000;
+    --pxfont:"Press Start 2P", ui-monospace, monospace;
+    --uifont:"Silkscreen", ui-monospace, monospace;
   }
   *{box-sizing:border-box}
-  html{scroll-behavior:smooth}
-  body{
-    margin:0; background:var(--ink); color:#F2EEF9;
-    font:16px/1.75 -apple-system,BlinkMacSystemFont,"Segoe UI","Helvetica Neue",
-         Arial,"Hiragino Sans","Noto Sans JP",sans-serif;
-    -webkit-font-smoothing:antialiased;
-  }
-  a{color:var(--sun)}
-  .wrap{max-width:1000px; margin-inline:auto; padding-inline:22px}
+  html{scroll-behavior:smooth; background:var(--paper)}
+  body{margin:0; background:var(--paper); color:var(--ink);
+       font:400 15px/1.9 var(--uifont); -webkit-font-smoothing:none}
+  img,svg{image-rendering:pixelated; image-rendering:crisp-edges}
+  a{color:inherit}
+  .wrap{max-width:1040px; margin-inline:auto; padding-inline:24px}
 
-  /* ---- top bar ---- */
-  .bar{
-    position:sticky; top:0; z-index:9; backdrop-filter:blur(10px);
-    background:rgba(9,6,15,.78); border-bottom:1px solid var(--line);
-  }
-  .bar .wrap{display:flex; align-items:center; gap:12px; height:62px}
-  .bar img{width:28px; height:28px; display:block}
-  .bar b{font-size:15px; letter-spacing:.14em}
-  .bar nav{margin-left:auto; display:flex; gap:22px; font-size:14px}
-  .bar nav a{color:var(--dim); text-decoration:none}
-  .bar nav a:hover{color:#fff}
+  /* ---------- top bar ---------- */
+  .bar{position:sticky; top:0; z-index:20; background:var(--paper); border-bottom:3px solid var(--ink)}
+  .bar .wrap{display:flex; align-items:center; gap:13px; height:66px}
+  .bar .face{width:44px; height:44px; display:block; border:2px solid var(--ink); image-rendering:auto}
+  .bar b{font:400 11px/1 var(--pxfont); white-space:nowrap}
+  .bar nav{margin-left:auto; display:flex; gap:20px; font-size:14px}
+  .bar nav a{text-decoration:none; padding:4px 3px}
+  .bar nav a:hover{background:var(--ink); color:var(--paper)}
 
-  /* ---- hero ---- */
-  header{
-    text-align:center; padding:84px 0 72px;
-    background:
-      radial-gradient(900px 380px at 50% -10%, rgba(232,70,124,.30), transparent 62%),
-      radial-gradient(780px 340px at 82% 6%, rgba(60,180,155,.24), transparent 60%);
-  }
-  header img{width:88px; height:88px; margin-bottom:22px}
-  h1{
-    margin:0 0 14px; font-size:clamp(34px,6.4vw,60px); font-weight:900;
-    letter-spacing:.10em; line-height:1.05;
-  }
-  h1 .g{
-    background:linear-gradient(100deg,var(--pink),var(--sun) 52%,var(--teal));
-    -webkit-background-clip:text; background-clip:text; color:transparent;
-  }
-  header p{color:var(--dim); margin:0 auto; max-width:44ch; font-size:17px}
+  /* ---------- hero（白黒・特大ドット） ---------- */
+  .hero{position:relative; text-align:center; padding:104px 0 62px; overflow:hidden}
+  .hero:before{content:""; position:absolute; inset:0 0 auto 0; height:320px;
+    background:url("img/fade-studio.png") repeat-x top left; image-rendering:pixelated}
+  .hero .inner{position:relative; background:var(--paper); padding:40px 24px 34px;
+    max-width:820px; margin-inline:auto}
+  .hero .face{width:192px; height:192px; display:block; margin:0 auto 30px;
+    border:5px solid var(--ink); image-rendering:auto}
+  .hero h1{margin:0 0 20px; font:400 clamp(20px,4.6vw,42px)/1.25 var(--pxfont); word-spacing:.3em}
+  .hero p{margin:0 auto; max-width:46ch; font-size:14.5px}
 
-  /* ---- sections ---- */
-  section{padding:62px 0; border-top:1px solid var(--line)}
-  h2{font-size:13px; letter-spacing:.22em; text-transform:uppercase; color:var(--dim);
-     margin:0 0 26px; font-weight:700}
+  /* ---------- section headings ---------- */
+  .sechead{padding:34px 0 0}
+  h2{font:400 13px/1 var(--pxfont); margin:0}
 
-  /* ---- game cards ---- */
-  .game{
-    display:grid; grid-template-columns:minmax(0,1.05fr) minmax(0,1fr); gap:0;
-    background:var(--paper); border:1px solid var(--line); border-radius:18px;
-    overflow:hidden; margin-bottom:20px;
-  }
-  .game > a.shot{display:block; line-height:0}
-  .game img{width:100%; height:100%; object-fit:cover; display:block; min-height:210px}
-  .game .body{padding:30px 32px}
-  .game h3{margin:0 0 4px; font-size:24px; letter-spacing:.02em}
-  .game h3 a{color:#fff; text-decoration:none}
-  .game h3 a:hover{color:var(--sun)}
-  .game .kicker{color:var(--pink); font-size:12px; letter-spacing:.18em;
-                text-transform:uppercase; font-weight:700; margin:0 0 10px}
-  .game p{color:var(--dim); margin:0 0 18px; font-size:15px}
-  .meta{display:flex; flex-wrap:wrap; gap:8px; margin:0 0 20px}
-  .meta span{
-    font-size:12px; color:var(--dim); border:1px solid var(--line);
-    border-radius:999px; padding:4px 11px;
-  }
-  .go{
-    display:inline-block; text-decoration:none; font-weight:800; font-size:14px;
-    letter-spacing:.03em; color:#1A0B14; background:var(--sun);
-    padding:11px 24px; border-radius:999px; border:2px solid transparent;
-  }
-  .go.alt{ background:transparent; color:#F3EFFA; border-color:var(--line) }
-  .gorow{ display:flex; flex-wrap:wrap; gap:12px; align-items:center }
-  .soon{
-    border:1px dashed var(--line); border-radius:18px; padding:30px 32px;
-    color:var(--dim); background:transparent;
-  }
-  .soon h3{margin:0 0 6px; font-size:19px; color:#CFC7E0; letter-spacing:.02em}
-  .soon p{margin:0; font-size:15px}
+  /* ---------- ゲームの帯（ここだけカラー） ---------- */
+  .band{position:relative; background:var(--paper); border-top:8px solid var(--c);
+        padding:150px 0 60px; overflow:hidden; margin-top:26px}
+  .band:before{content:""; position:absolute; inset:0 0 auto 0; height:140px;
+    background-image:var(--fade); background-repeat:repeat-x; background-position:top left;
+    image-rendering:pixelated; pointer-events:none}
+  .band .inner{position:relative; display:grid; grid-template-columns:minmax(0,440px) minmax(0,1fr);
+    gap:34px; align-items:start}
 
-  /* ---- about ---- */
-  .cols{display:grid; grid-template-columns:repeat(auto-fit,minmax(250px,1fr)); gap:26px}
-  .cols p{margin:0; color:var(--dim); font-size:15px}
-  .cols h3{margin:0 0 8px; font-size:15px; color:#fff; letter-spacing:.02em}
+  .art{display:block; line-height:0; border:4px solid var(--c); background:var(--paper)}
+  .art img{width:100%; height:auto; display:block}
+  .art.photo img{image-rendering:auto}
 
-  footer{padding:40px 0 62px; border-top:1px solid var(--line); color:var(--dim); font-size:14px}
-  footer a{color:var(--dim)}
-  .jp{margin-top:14px; padding-top:14px; border-top:1px dashed var(--line); line-height:1.9}
+  .kicker{display:inline-block; font-size:12px; letter-spacing:.1em; margin:0 0 12px;
+    background:var(--c); color:var(--paper); padding:4px 10px}
+  .band h3{margin:0 0 14px; font:400 clamp(15px,2.6vw,21px)/1.3 var(--pxfont); color:var(--c)}
+  .band h3 a{text-decoration:none}
+  .band h3 a:hover{background:var(--c); color:var(--paper)}
+  .desc{margin:0 0 20px; font-size:14px}
+  .meta{display:flex; flex-wrap:wrap; gap:7px; margin:0 0 24px; list-style:none; padding:0}
+  .meta li{font-size:11.5px; border:2px solid var(--c); padding:3px 9px}
 
-  @media (max-width:720px){
-    .game{grid-template-columns:1fr}
-    .game img{min-height:170px}
-    .bar nav{gap:16px}
+  .gorow{display:flex; flex-wrap:wrap; gap:12px}
+  .go{display:inline-block; text-decoration:none; font:400 12px/1 var(--pxfont);
+    padding:14px 20px; border:3px solid var(--c); background:var(--c); color:var(--paper)}
+  .go.alt{background:var(--paper); color:var(--c)}
+  .go:hover{background:var(--paper); color:var(--c)}
+  .go.alt:hover{background:var(--c); color:var(--paper)}
+  .tip{font-size:11.5px; margin:14px 0 0}
+
+  /* ---------- about（白黒に戻る） ---------- */
+  .about{border-top:3px solid var(--ink); margin-top:46px; padding:52px 0 56px}
+  .cols{display:grid; grid-template-columns:repeat(auto-fit,minmax(240px,1fr)); gap:30px; margin-top:26px}
+  .cols h3{margin:0 0 10px; font:400 11px/1.5 var(--pxfont)}
+  .cols p{margin:0; font-size:14px}
+
+  footer{border-top:3px solid var(--ink); padding:34px 0 66px; font-size:13px}
+  footer nav{display:flex; flex-wrap:wrap; gap:6px 16px; margin-bottom:16px}
+  footer a{text-decoration:none; border-bottom:1px solid var(--ink)}
+  footer a:hover{background:var(--ink); color:var(--paper)}
+  .colophon{font-size:12px; max-width:64ch}
+
+  @media (max-width:820px){
+    .band .inner{grid-template-columns:1fr; gap:26px}
+    .band{padding:120px 0 50px}
+    .hero{padding:92px 0 64px}
+    .bar b{font-size:9px}
+    .bar .wrap{gap:10px}
+    .bar .face{width:38px; height:38px}
+    .hero .face{width:136px; height:136px; border-width:4px; margin-bottom:24px}
+    .bar nav{gap:13px; font-size:13px}
   }
+  @media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}}
 </style>
 </head>
 <body>
 
 <div class="bar">
   <div class="wrap">
-    <img src="img/mark.svg" alt="">
+    <img class="face" src="img/osho-face-sm.png" alt="" width="96" height="96">
     <b>OSHO GAMES</b>
     <nav>
       <a href="#games">Games</a>
@@ -125,63 +132,94 @@
   </div>
 </div>
 
-<header>
+<header class="hero">
   <div class="wrap">
-    <img src="img/mark.svg" alt="OSHO GAMES">
-    <h1><span class="g">OSHO GAMES</span></h1>
-    <p>An independent studio making small, fast games —
-       built to be picked up with two thumbs and put down again.</p>
+    <div class="inner">
+      <img class="face" src="img/osho-face.png" alt="OSHO GAMES" width="384" height="384">
+      <h1>OSHO GAMES</h1>
+      <p>An independent studio making small, fast games —
+         built to be picked up with two thumbs and put down again.</p>
+    </div>
   </div>
 </header>
 
-<section id="games">
-  <div class="wrap">
-    <h2>Games</h2>
+<div class="wrap sechead" id="games"><h2>GAMES</h2></div>
 
-    <article class="game">
-      <a class="shot" href="popclash/"><img src="img/popclash-banner.jpg" alt="POP CLASH"></a>
-      <div class="body">
-        <p class="kicker">Out now</p>
-        <h3><a href="popclash/">POP CLASH</a></h3>
-        <p>Eight fighters, one arena. Damage builds a percentage instead of draining a
-           health bar — the higher yours climbs, the further the next hit sends you.
-           Quest mode with bosses, ninety-six pieces of gear, and specials that change
-           as you level them.</p>
-        <div class="meta">
-          <span>Android</span><span>Platform fighter</span><span>Offline</span>
-          <span>1–4 players</span><span>8 languages</span><span>Free</span>
-        </div>
-        <div class="gorow">
-          <a class="go" href="solanadappstore://details?id=io.popclash.game">Get it on Solana dApp Store →</a>
-          <a class="go alt" href="popclash/">View the game →</a>
-        </div>
+<!-- ===================== POP CLASH ===================== -->
+<section class="band" style="--c:#E8467C; --fade:url('img/fade-popclash.png')">
+  <div class="wrap inner">
+    <a class="art photo" href="popclash/"><img src="img/popclash-banner.jpg" alt="POP CLASH" width="1600" height="800"></a>
+    <div>
+      <p class="kicker">OUT NOW</p>
+      <h3><a href="popclash/">POP CLASH</a></h3>
+      <p class="desc">Eight fighters, one arena. Damage builds a percentage instead of draining a
+         health bar — the higher yours climbs, the further the next hit sends you.
+         Quest mode with bosses, ninety-six pieces of gear, and specials that change
+         as you level them.</p>
+      <ul class="meta">
+        <li>Android</li><li>Platform fighter</li><li>Offline</li>
+        <li>1–4 players</li><li>8 languages</li><li>Free</li>
+      </ul>
+      <div class="gorow">
+        <a class="go" href="solanadappstore://details?id=io.popclash.game">GET IT</a>
+        <a class="go alt" href="popclash/">VIEW THE GAME</a>
       </div>
-    </article>
-
-    <div class="soon">
-      <h3>More in development</h3>
-      <p>Another title is being built now. It will show up here when there is something
-         worth showing.</p>
+      <p class="tip">The store link only opens on an Android phone. On a computer, use “View the game”.</p>
     </div>
   </div>
 </section>
 
-<section id="about">
+<!-- ===================== GUNZ STRIKE ===================== -->
+<section class="band" style="--c:#8FA05C; --fade:url('img/fade-gunzstrike.png')">
+  <div class="wrap inner">
+    <div class="art"><img src="img/gunzstrike-plate.png" alt="" width="600" height="300"></div>
+    <div>
+      <p class="kicker">IN DEVELOPMENT</p>
+      <h3>GUNZ STRIKE</h3>
+      <p class="desc">A run and gun you can play with one hand. You advance and fire on your own —
+         your thumb only steers. Break the cages along the way and the prisoners fall in
+         beside you, until a whole squad walks into the next boss.</p>
+      <ul class="meta">
+        <li>Android</li><li>Run and gun</li><li>One hand</li><li>4 languages</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== RELIC DIVER ===================== -->
+<section class="band" style="--c:#E0A63A; --fade:url('img/fade-relicdiver.png')">
+  <div class="wrap inner">
+    <div class="art"><img src="img/relicdiver-plate.png" alt="" width="600" height="300"></div>
+    <div>
+      <p class="kicker">IN DEVELOPMENT</p>
+      <h3>RELIC DIVER</h3>
+      <p class="desc">A lantern, a pickaxe and a rope. Dig down through seven ruins drawn from
+         real places on earth, take what is buried there, and climb back out before
+         the lantern runs dry.</p>
+      <ul class="meta">
+        <li>iOS</li><li>Android</li><li>Voxel</li><li>Exploration</li>
+      </ul>
+    </div>
+  </div>
+</section>
+
+<!-- ===================== ABOUT ===================== -->
+<section class="about" id="about">
   <div class="wrap">
-    <h2>About</h2>
+    <h2>ABOUT</h2>
     <div class="cols">
       <div>
-        <h3>What we make</h3>
-        <p>Games that run on a phone without asking anything of it. No accounts, no
-           timers, no ads. You open them and they are already playing.</p>
+        <h3>WHAT WE MAKE</h3>
+        <p>Small games for phones. Short sessions, nothing to learn first, and playable
+           with two thumbs while standing up.</p>
       </div>
       <div>
-        <h3>How they are built</h3>
-        <p>Each game is one self-contained build — the whole thing draws itself and
-           synthesises its own sound, so it starts instantly and works offline.</p>
+        <h3>HOW THEY ARE MADE</h3>
+        <p>One person, start to finish — code, art, sound and the store pages.
+           Small on purpose. It is the only way they get finished.</p>
       </div>
       <div>
-        <h3>Get in touch</h3>
+        <h3>GET IN TOUCH</h3>
         <p>Press, feedback, or anything else:<br>
            <a href="mailto:ai.hitori.osho@gmail.com">ai.hitori.osho@gmail.com</a></p>
       </div>
@@ -191,14 +229,14 @@
 
 <footer>
   <div class="wrap">
-    © 2026 OSHO GAMES ·
-    <a href="popclash/">POP CLASH</a> ·
-    <a href="popclash/privacy.html">Privacy</a> ·
-    <a href="mailto:ai.hitori.osho@gmail.com">ai.hitori.osho@gmail.com</a>
-    <div class="jp">
-      OSHO GAMES is a one-person studio making small games for phones.
-      No sign-ups, no waiting, no ads. You open them and they are already playing.
-    </div>
+    <nav>
+      <a href="popclash/">POP CLASH</a>
+      <a href="popclash/privacy.html">Privacy</a>
+      <a href="popclash/terms.html">Terms</a>
+      <a href="mailto:ai.hitori.osho@gmail.com">ai.hitori.osho@gmail.com</a>
+    </nav>
+    <p class="colophon">© 2026 OSHO GAMES · a one-person studio.<br>
+       The studio is black and white. The colour belongs to the games.</p>
   </div>
 </footer>
 
