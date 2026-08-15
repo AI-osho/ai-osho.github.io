@@ -84,8 +84,10 @@
   .go{
     display:inline-block; text-decoration:none; font-weight:800; font-size:14px;
     letter-spacing:.03em; color:#1A0B14; background:var(--sun);
-    padding:11px 24px; border-radius:999px;
+    padding:11px 24px; border-radius:999px; border:2px solid transparent;
   }
+  .go.alt{ background:transparent; color:#F3EFFA; border-color:var(--line) }
+  .gorow{ display:flex; flex-wrap:wrap; gap:12px; align-items:center }
   .soon{
     border:1px dashed var(--line); border-radius:18px; padding:30px 32px;
     color:var(--dim); background:transparent;
@@ -149,8 +151,10 @@
           <span>Android</span><span>Platform fighter</span><span>Offline</span>
           <span>1–4 players</span><span>8 languages</span><span>Free</span>
         </div>
-        <a class="go" href="popclash/">View the game →</a>
-        <a class="go" href="solanadappstore://details?id=io.popclash.game" style="margin-left:18px">Get it on Solana dApp Store →</a>
+        <div class="gorow">
+          <a class="go" href="solanadappstore://details?id=io.popclash.game">Get it on Solana dApp Store →</a>
+          <a class="go alt" href="popclash/">View the game →</a>
+        </div>
       </div>
     </article>
 
