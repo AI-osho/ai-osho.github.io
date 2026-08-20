@@ -12,12 +12,19 @@
   @media (prefers-color-scheme: dark){ body{ color:#e9e7f0; background:#14121c; } }
   h1 { font-size:1.7rem; margin:0 0 .2rem; }
   h2 { font-size:1.12rem; margin:2.2rem 0 .5rem; }
+  h3 { font-size:1rem; margin:1.4rem 0 .3rem; }
   .sub { color:#7a7788; margin:0 0 2rem; }
   .box { border:2px solid #E8467C; border-radius:12px; padding:1rem 1.2rem; margin:1.4rem 0;
          font-weight:600; }
   hr { border:0; border-top:1px solid #d9d7e0; margin:3rem 0 1.6rem; }
   @media (prefers-color-scheme: dark){ .sub{ color:#9b98ab; } }
   code { background:rgba(127,127,127,.16); padding:.1em .35em; border-radius:4px; }
+  table { border-collapse:collapse; width:100%; margin:.8rem 0 1.2rem; font-size:.95rem; }
+  th,td { border:1px solid #d9d7e0; padding:.45rem .6rem; text-align:left; vertical-align:top; }
+  th { background:rgba(127,127,127,.10); font-weight:600; }
+  @media (prefers-color-scheme: dark){ th,td{ border-color:#3a3748; } }
+  ul { padding-left:1.2rem; }
+  li { margin:.3rem 0; }
 </style>
 </head>
 <body>
@@ -25,41 +32,106 @@
 <p style="margin:0 0 1.4rem"><a href="index.html">← POP CLASH</a></p>
 
 <h1>POP CLASH — Privacy Policy</h1>
-<p class="sub">Last updated: 1 August 2026</p>
+<p class="sub">Last updated: 20 August 2026</p>
 
-<div class="box">POP CLASH does not collect, store, transmit or share any personal
-information. The game has no network functionality of any kind.</div>
+<div class="box">POP CLASH plays entirely offline. There is no account and no
+sign-in. Two features are optional and you choose whether to use them: connecting
+a Solana wallet, and the weekly ranking. Everything else in the game works with
+the network switched off, exactly as before.</div>
 
-<h2>What the app collects</h2>
-<p>Nothing. There is no account, no sign-in, no analytics, no advertising, no
-crash reporting and no third-party SDK that transmits data. The app requests no
-runtime permissions: no camera, microphone, contacts, location, storage or
-identifiers.</p>
+<h2>What the app collects on its own</h2>
+<p>Nothing. There is no analytics, no advertising, no crash reporting and no
+third-party SDK that transmits data. The app requests no runtime permissions: no
+camera, microphone, contacts, location, storage or identifiers. Nothing is sent
+anywhere unless you press a button that says it will.</p>
 
 <h2>What the app stores on your device</h2>
-<p>One save file, held in the app's own private storage on your device. It
-contains your coins, the equipment you own and have equipped, your skill levels,
-your quest progress, your chosen language and a count of matches played and won.
-It never leaves your device. Uninstalling the app removes it.</p>
+<p>One save file, held in the app's own private storage. It contains your coins,
+the equipment you own and have equipped, your skill levels, your quest progress,
+your chosen language, a count of matches played and won, and — if you have played
+the weekly challenge — your best time for the current week together with the
+recorded button presses from that run. It never leaves your device unless you
+submit it to the ranking. Uninstalling the app removes it.</p>
+<p>If you connect a wallet, the app also stores your wallet's public address and
+the authorisation token the wallet gave it, so you do not have to approve again
+every time. Disconnecting removes both.</p>
 
-<h2>Network access</h2>
-<p>The app makes no network requests. The Android <code>INTERNET</code>
-permission is present because it is declared by the application framework the
-game is built on; the game itself never uses it, and the app runs identically in
-airplane mode.</p>
+<h2>Connecting a wallet (optional)</h2>
+<p>Connecting uses the Solana Mobile Wallet Adapter, which talks to a wallet app
+<strong>installed on the same device</strong>. It does not use the internet. We
+receive nothing from it, and we never see your private key or seed phrase. The
+app never asks your wallet to approve a transaction, spend anything, or write to
+any blockchain — the only thing it ever asks for is a signature that proves you
+own the address, and only when you submit a ranking time.</p>
+<p>If your wallet reports a display name for the account (for example a Seeker ID
+ending in <code>.skr</code>), the app shows that name instead of your address.</p>
+
+<h2>The weekly ranking (optional)</h2>
+<p>The ranking is the only part of POP CLASH that uses the internet. It is off
+unless you use it.</p>
+
+<h3>When you press SUBMIT</h3>
+<p>The app sends the following to <code>api.oshogames.com</code>, a server
+operated by OSHO GAMES:</p>
+<table>
+  <tr><th>What</th><th>Why</th></tr>
+  <tr><td>Your wallet's public address</td><td>To identify the entry as yours. This is public information; it is not a private key.</td></tr>
+  <tr><td>The display name your wallet reports (e.g. <code>osho.skr</code>), if any</td><td>To show a readable name on the board instead of an address.</td></tr>
+  <tr><td>The week number and your clear time</td><td>The entry itself.</td></tr>
+  <tr><td><strong>The button presses recorded during that run</strong></td><td>So the server can replay the run and confirm the time is real. Without this, any time could be claimed. It is a list of which buttons were held on each frame — nothing else.</td></tr>
+  <tr><td>A signature made by your wallet</td><td>To prove the entry came from the owner of that address.</td></tr>
+  <tr><td>The version number of the game</td><td>So the server replays with the matching version of the game code.</td></tr>
+</table>
+<p>What is sent is a record of that single challenge run. It contains no personal
+information, no contacts, no device identifiers and nothing about anything else
+you do on your phone.</p>
+
+<h3>When you open the ranking screen</h3>
+<p>The app requests the current board. If a wallet is connected, your public
+address is included in that request so the server can tell you your own position.
+Nothing else is sent.</p>
+
+<h3>What is stored, and what is public</h3>
+<p>For each week we keep one entry per wallet address: the address, the display
+name, the time, the recorded run, and when it was submitted. <strong>The name and
+the time are shown publicly on the leaderboard inside the game.</strong> The
+recorded run is kept so an entry can be re-checked; it is not published.</p>
+<p>Entries are kept while the game is in service. You can ask us to delete yours
+at any time — email the address below from any address, telling us the wallet
+address to remove.</p>
+
+<h3>Server logs</h3>
+<p>Like any web server, ours records the IP address, time and path of requests it
+receives, for security and troubleshooting. These logs are rotated and discarded
+in the ordinary course; they are not combined with ranking entries and are not
+used to build a profile of anyone.</p>
+
+<h2>Who else receives anything</h2>
+<p>Nobody. There is no analytics provider, no advertising network and no data
+broker. The ranking server is run by OSHO GAMES and does not share what it holds
+with third parties. We would disclose information only if we were legally
+required to.</p>
 
 <h2>Children</h2>
-<p>The game is suitable for all ages and contains no advertising, no purchases
-and no communication features. Because it collects no data at all, it collects no
-data from children.</p>
+<p>The game is suitable for all ages and contains no advertising and no
+purchases. Played on its own it collects nothing, so it collects nothing from
+children. The ranking requires a Solana wallet, which children are unlikely to
+have; the only text it can display is the name supplied by a wallet, and there is
+no chat, messaging or other way for players to communicate.</p>
 
 <h2>Changes</h2>
-<p>If a future version ever collects anything, this page will be updated before
-that version is released, and the change will be described here.</p>
+<p>If a future version collects anything not described here, this page will be
+updated before that version is released, and the change will be described here.</p>
+
+<h3>What changed in version 1.1</h3>
+<p>Version 1.0 had no network functionality at all. Version 1.1 adds optional
+wallet connection (which does not use the internet) and the optional weekly
+ranking (which does). The game still plays in full with the network switched
+off.</p>
 
 <h2>Contact</h2>
-<p>Questions about this policy: <a href="mailto:ai.hitori.osho@gmail.com">ai.hitori.osho@gmail.com</a></p>
-
+<p>Questions about this policy, or a request to delete a ranking entry:
+<a href="mailto:ai.hitori.osho@gmail.com">ai.hitori.osho@gmail.com</a></p>
 
 </body>
 </html>
